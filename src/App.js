@@ -6,10 +6,24 @@ function App() {
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit-20"
   );
+
   const getAllPokemons = async () => {
     const data = await axios(loadMore);
+    setLoadMore(data.data.next);
+    function createPokemonObject(result) {
+      result.forEach(async (pokemon) => {
+        const data = await axios.get(
+          `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
+        );
+
+        setAllPokemons((currentList) => [...currentList, data.data]);
+      });
+    }
+    createPokemonObject(data.data.results);
+    await console.log(allPokemons);
   };
 
+  // an empty array means just load once.
   useEffect(() => {
     getAllPokemons();
   }, []);
