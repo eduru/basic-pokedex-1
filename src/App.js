@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PokemonThumbnail from "./components/PokemonThumbnail";
 
 function App() {
   const [allPokemons, setAllPokemons] = useState([]);
@@ -20,7 +21,7 @@ function App() {
       });
     }
     createPokemonObject(data.data.results);
-    await console.log(allPokemons);
+    await console.log(allPokemons, "allPokemons");
   };
 
   // an empty array means just load once.
@@ -32,8 +33,20 @@ function App() {
     <div className="app-container">
       <h1>Pokedex!</h1>
       <div className="pokemon-container">
-        <div className="all-container"></div>
-        <button className="load-more">Load more</button>
+        <div className="all-container">
+          {allPokemons.map((pokemon, index) => (
+            <PokemonThumbnail
+              id={pokemon.id}
+              name={pokemon.name}
+              image={pokemon.sprites.other.dream_world.front_default}
+              type={pokemon.types[0].type.name}
+              key={index}
+            />
+          ))}
+        </div>
+        <button className="load-more" onClick={getAllPokemons}>
+          Load more
+        </button>
       </div>
     </div>
   );
