@@ -10,7 +10,9 @@ function App() {
 
   const getAllPokemons = async () => {
     const data = await axios(loadMore);
+
     setLoadMore(data.data.next);
+
     function createPokemonObject(result) {
       result.forEach(async (pokemon) => {
         const data = await axios.get(
@@ -24,7 +26,6 @@ function App() {
     await console.log(allPokemons, "allPokemons");
   };
 
-  // an empty array means just load once.
   useEffect(() => {
     getAllPokemons();
   }, []);
