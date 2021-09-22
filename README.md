@@ -2,11 +2,13 @@
 
 Simple Pokedex app which displays Pokemon using the PokeApi.
 
-### `yarn add`
+![](pokedemo.gif)
+
+### `npm install`
 
 To install all the dependencies.
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
