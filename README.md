@@ -2,7 +2,7 @@
 
 Simple Pokedex app which displays Pokemon using the PokeApi.
 
-![]pokedemo.gif
+![](pokedemo.gif)
 
 ### `npm install`
 
